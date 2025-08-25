@@ -6,6 +6,11 @@
   <title>InferDoom</title>
   <style>
 
+    /* === General Styling === */
+    html {
+      scroll-behavior: smooth; /* (4) Smooth Scroll */
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -23,12 +28,13 @@
       100% {background-position: 0% 50%;}
     }
 
+    /* === Header/Navbar === */
     .header {
-      position: fixed;   /* Stays at the top */
+      position: fixed;   
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;     /* Always on top */
+      z-index: 1000;     
       
       display: flex;
       justify-content: space-between;
@@ -91,7 +97,41 @@
       border: none;
       border-top: 2px solid black;
       margin: 0;
-      margin-top: 75px; /* Pushes below fixed header */
+      margin-top: 75px; /* Push content below fixed header */
+    }
+
+    /* === Animations (5) === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === Gradient Button (8) === */
+    .btn {
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
     }
 
     /* === Responsive Styling === */
@@ -132,6 +172,7 @@
 
 <body>
 
+  <!-- Header -->
   <div class="header">
     <div class="logo">InferDoom</div>
 
@@ -148,7 +189,8 @@
 
   <hr class="divider">
 
-  <div style="padding: 40px; font-family: Arial, sans-serif; max-width: 900px; margin: auto; background: rgba(255,255,255,0.85); border-radius: 12px;">
+  <!-- Main Content -->
+  <div id="home" class="fade-in" style="padding: 40px; font-family: Arial, sans-serif; max-width: 900px; margin: auto; background: rgba(255,255,255,0.85); border-radius: 12px;">
     <h1 style="color: #2c3e50;">📘 Welcome to the Student Helper Portal — Your Study Companion!</h1>
     
     <p style="font-size: 18px; line-height: 1.6; color: #34495e;">
@@ -165,9 +207,11 @@
       <li>📄 <strong>PDF Downloads</strong> – Easily accessible for offline study</li>
     </ul>
     <br>
-    <b><p>For Previous Year Question Papers (Official CBSE Website of Every Set & Q.P Code ) <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th">PYQs</a> </p></b>
+    <b><p>For Previous Year Question Papers (Official CBSE Website of Every Set & Q.P Code ) 
+      <a class="btn" href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th">📄 Get PYQs</a> 
+    </p></b>
   
-    <h2 style="margin-top: 40px; color: #27ae60;">📊 Subject Focus Chart</h2>
+    <h2 id="questions" style="margin-top: 40px; color: #27ae60;">📊 Subject Focus Chart</h2>
     <p style="color: #7f8c8d; font-size: 16px;">Our most accessed subjects by students this month:</p>
   
     <div style="margin-top: 10px;">
@@ -200,6 +244,8 @@
     <p style="margin-top: 40px; font-size: 16px; color: #2c3e50;">
       💡 Whether you're revising before exams or starting a new chapter, this website is your digital best friend for all Class 10 subjects. Bookmark it, share it, and keep learning smarter every day!
     </p>
+
+    <a class="btn" href="#home">⬆ Back to Top</a>
   </div>
 
 </body>
