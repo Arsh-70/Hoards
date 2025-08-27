@@ -4,88 +4,62 @@
   <meta charset="UTF-8">
   <title>Class 10 Subjects | Notes Collection</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Import Google Font (Poppins) -->
+  <!-- Import Poppins font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Global style */
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f9fafc;
       margin: 0;
       padding: 0;
-      color: #333;
-      line-height: 1.6;
+      /* Gradient background (Blue → Purple → Teal) */
+      background: linear-gradient(135deg, #4e73df, #6f42c1, #1cc88a);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Header */
     header {
-      background: linear-gradient(135deg, #4e73df, #1cc88a);
+      background: rgba(0,0,0,0.4); /* semi-transparent overlay */
       color: white;
       text-align: center;
-      padding: 25px 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      backdrop-filter: blur(6px);
     }
 
-    header h2 {
-      margin: 0;
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-
-    /* Title */
     h1 {
       text-align: center;
-      margin-top: 40px;
-      font-size: 2rem;
-      font-weight: 600;
-      color: #222;
+      margin-top: 30px;
+      color: #fff;
     }
 
-    /* Subjects container */
     .subjects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       margin: 40px auto;
-      max-width: 1000px;
-      padding: 0 20px;
+      max-width: 900px;
+      gap: 20px;
     }
 
-    /* Each subject card */
     .subject {
-      background-color: #fff;
-      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9); /* white but slightly see-through */
+      padding: 20px 30px;
       border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
       cursor: pointer;
       font-size: 18px;
       font-weight: 600;
-      text-align: center;
+      transition: transform 0.2s, background-color 0.3s, color 0.3s;
       text-decoration: none;
       color: #333;
-      transition: all 0.3s ease;
     }
 
     .subject:hover {
-      background: linear-gradient(135deg, #4e73df, #1cc88a);
+      background-color: #4e73df;
       color: #fff;
-      transform: translateY(-5px) scale(1.03);
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      header h2 {
-        font-size: 1.4rem;
-      }
-      .subject {
-        font-size: 16px;
-        padding: 15px;
-      }
+      transform: translateY(-3px);
     }
   </style>
 </head>
@@ -104,7 +78,6 @@
     <a class="subject" href="#">English</a>
     <a class="subject" href="#">Hindi</a>
     <a class="subject" href="#">Computer</a>
-    <!-- Add more subjects as needed -->
   </div>
 
 </body>
