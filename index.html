@@ -8,15 +8,13 @@
 
     /* === General Styling === */
     html {
-      scroll-behavior: smooth; /* (4) Smooth Scroll */
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       min-height: 100vh;
-
-      /* Gradient background */
       background: linear-gradient(270deg, #667eea, #764ba2, #ff6a00);
       background-size: 600% 600%;
       animation: gradient 15s ease infinite;
@@ -97,10 +95,10 @@
       border: none;
       border-top: 2px solid black;
       margin: 0;
-      margin-top: 75px; /* Push content below fixed header */
+      margin-top: 75px;
     }
 
-    /* === Animations (5) === */
+    /* === Animations === */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -114,7 +112,7 @@
       }
     }
 
-    /* === Gradient Button (8) === */
+    /* === Gradient Button === */
     .btn {
       background: linear-gradient(90deg, #667eea, #764ba2);
       color: white;
@@ -134,7 +132,7 @@
       transform: scale(1.05);
     }
 
-    /* === Responsive Styling === */
+    /* === Mobile Extras === */
     @media (max-width: 768px) {
       .navbar-wrapper {
         width: 100%;
@@ -160,6 +158,52 @@
       .navbar.show {
         display: flex;
       }
+
+      /* Bottom nav */
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(17,17,17,0.9);
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+        z-index: 999;
+      }
+
+      .bottom-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.3rem;
+      }
+
+      /* Floating Action Button */
+      .fab {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        background: #ff4757;
+        color: white;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        cursor: pointer;
+        z-index: 999;
+      }
+    }
+
+    /* Desktop only */
+    @media (min-width: 769px) {
+      .bottom-nav, .fab {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -167,6 +211,11 @@
   function toggleMenu() {
     const navbar = document.getElementById("navbar");
     navbar.classList.toggle("show");
+  }
+
+  // Scroll to top when FAB is clicked
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 </script>
 
@@ -248,5 +297,17 @@
     <a class="btn" href="#home">⬆ Back to Top</a>
   </div>
 
+  <!-- Bottom Nav (mobile only) -->
+  <nav class="bottom-nav">
+    <a href="#home">🏠</a>
+    <a href="collect.html">📚</a>
+    <a href="#questions">📊</a>
+    <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th">📄</a>
+  </nav>
+
+  <!-- Floating Action Button (mobile only) -->
+  <div class="fab" onclick="scrollToTop()">↑</div>
+
 </body>
 </html>
+
