@@ -1,214 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About & Contact</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About & Contact — Template</title>
   <style>
-    :root {
-      --bg: #f4f4f4;
-      --text: #333;
-      --card: #fff;
-      --accent: #4e73df;
+    :root{
+      --bg:#f7f8fb; --card:#ffffff; --text:#0f1724; --muted:#6b7280; --accent:#4e73df;
+      --radius:14px; --glass: rgba(255,255,255,0.6);
     }
-    [data-theme="dark"] {
-      --bg: #1e1e1e;
-      --text: #f5f5f5;
-      --card: #2b2b2b;
-      --accent: #1cc88a;
+    [data-theme="dark"]{
+      --bg:#0b1020; --card:#0f1724; --text:#e6eef8; --muted:#9aa6bf; --accent:#6ea0ff; --glass: rgba(255,255,255,0.03);
     }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background .3s, color .3s;
-    }
-    header {
-      padding: 1.2rem;
-      background: var(--accent);
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.4rem;
-    }
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .card {
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      transition: background .3s, color .3s;
-    }
-    .about img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    form input, form textarea, form button {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      font-family: inherit;
-      transition: border .2s;
-    }
-    form input:focus, form textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    form button {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    form button:disabled {
-      background: #999;
-      cursor: not-allowed;
-    }
-    .status {
-      display: none;
-      margin-top: 1rem;
-      padding: .8rem 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-    }
-    .status.success {
-      background: #d4edda;
-      color: #155724;
-    }
-    .status.error {
-      background: #f8d7da;
-      color: #721c24;
-    }
-    .theme-toggle {
-      background: #fff2;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      padding: .5rem;
-      color: #fff;
-      cursor: pointer;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.1rem; }
-      .about img { width: 90px; height: 90px; }
-    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#e9eefb);}
+
+    .container{max-width:980px;padding:28px;margin:30px auto;display:grid;grid-template-columns:1fr 420px;gap:28px}
+    @media (max-width:880px){.container{grid-template-columns:1fr;padding:18px}}
+
+    .card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:0 8px 30px rgba(12,20,40,0.06);backdrop-filter: blur(6px)}
+
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:12px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#1cc88a)}
+    .title{font-weight:700;font-size:18px}
+    .subtitle{font-size:13px;color:var(--muted)}
+
+    .about{line-height:1.6}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(78,115,223,0.12),rgba(28,200,138,0.06));font-weight:600;color:var(--accent);font-size:13px}
+
+    .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .meta .item{font-size:13px;color:var(--muted)}
+
+    /* Contact form styles */
+    form{display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type="text"],input[type="email"],textarea,select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(15,23,36,0.06);background:transparent;font-size:14px;color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:520px){.row{grid-template-columns:1fr}}
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700;cursor:pointer}
+    .btn:disabled{opacity:0.6;cursor:default}
+
+    .socials{display:flex;gap:8px;margin-top:8px}
+    .socials a{padding:8px;border-radius:8px;font-size:13px;background:var(--glass);text-decoration:none;color:var(--text);display:inline-flex;align-items:center;gap:8px}
+
+    .footer-note{font-size:13px;color:var(--muted);margin-top:12px}
+
+    /* small UI */
+    .theme-toggle{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:6px 8px;border-radius:8px;cursor:pointer}
+    .success{background:#e6ffef;color:#064e2a;padding:10px;border-radius:10px}
+    .error{background:#ffe6e9;color:#7a1220;padding:10px;border-radius:10px}
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>About & Contact</h1>
-    <button class="theme-toggle" id="themeToggle">🌙</button>
-  </header>
-
   <div class="container">
-    <!-- About Section -->
-    <div class="card about">
-      <img src="https://via.placeholder.com/120" alt="Your photo">
-      <h2>Hello, I'm Your Name</h2>
-      <p>I'm a student/developer/designer who loves creating websites and projects. This website is where I share my work and ideas. 🚀</p>
-      <p>Follow me on:
-        <a href="#" target="_blank">Instagram</a> |
-        <a href="#" target="_blank">YouTube</a> |
-        <a href="#" target="_blank">GitHub</a>
-      </p>
-    </div>
+    <!-- ABOUT / PROFILE -->
+    <section class="card" aria-labelledby="about-heading">
+      <header>
+        <div class="brand">
+          <div class="avatar" id="avatar" aria-hidden="true">
+            <!-- Put your image here: replace with <img src="..." alt="..."> -->
+          </div>
+          <div>
+            <div class="title" id="about-heading">Arsh Khan</div>
+            <div class="subtitle">Student • Creator • Dev</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="theme-toggle" id="themeBtn" aria-pressed="false">Toggle theme</button>
+        </div>
+      </header>
 
-    <!-- Contact Section -->
-    <div class="card contact">
-      <h2>Contact Me</h2>
-      <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <input type="text" name="subject" placeholder="Subject" required>
-        <textarea name="message" rows="5" placeholder="Your message" required></textarea>
-        <button type="submit">Send Message</button>
+      <div class="about">
+        <p><span class="badge">About me</span></p>
+        <p>Hi — I’m <strong>Arsh </strong>. I make study notes, tutorials, and short videos about school topics and games. I build small web projects and love learning new things.</p>
+
+        <div class="meta">
+          <div class="item">📚 Class / Grade: 10</div>
+          <div class="item">💻 Interested in: Web making,Video Editing </div>
+          <div class="item">📍 Shivpuri,M.P,India</div>
+        </div>
+
+        <h3 style="margin-top:16px;margin-bottom:6px">Achievements / Projects</h3>
+        <ul style="margin-top:6px">
+          <li>Project: Notes Collection website </li>
+          <li>Have More Than 2 Lakhs Views On YT </li>
+        </ul>
+
+        <p class="footer-note">Tip: Replace the dummy text and avatar with your real info. Keep it short — visitors like quick clarity.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT CARD -->
+    <aside class="card" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact Me</h2>
+      <p class="subtitle">Have a question or want to collab? Send a message — I usually reply in a few days.</p>
+
+      <!-- Status message -->
+      <div id="status" style="display:none;margin-bottom:10px"></div>
+
+      <!-- Replace FORM_ENDPOINT with your form handler (Formspree, Formsubmit, or your server) -->
+      <form id="contactForm" method="POST" action="https://formspree.io/f/your-form-id">
+        <div class="row">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required placeholder="Your Name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com" />
+          </div>
+        </div>
+
+        <div>
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder="What is this about?" />
+        </div>
+
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Write your message..."></textarea>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn" type="submit">Send message</button>
+          <div style="margin-left:auto;font-size:13px;color:var(--muted)">or email: <a href="mailto:you@example.com">you@example.com</a></div>
+        </div>
       </form>
-      <div id="status" class="status"></div>
-    </div>
+
+      <div class="socials" aria-hidden="false">
+        <a href="#" id="yt">▶ YouTube</a>
+        <a href="#" id="ig">📸 Instagram</a>
+        <a href="#" id="gh">💻 GitHub</a>
+      </div>
+
+      <p class="footer-note">Privacy: I won’t share your email or message. Use respectful language.</p>
+    </aside>
   </div>
 
   <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', ()=>{
-      document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
-      themeToggle.textContent = document.body.dataset.theme === 'dark' ? '☀️' : '🌙';
-    });
+    // Theme toggle with system preference
+    const themeBtn = document.getElementById('themeBtn');
+    function applyTheme(t){ document.documentElement.setAttribute('data-theme', t); themeBtn.setAttribute('aria-pressed', t==='dark'); }
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let theme = localStorage.getItem('site-theme') || (prefersDark? 'dark':'light');
+    applyTheme(theme);
+    themeBtn.addEventListener('click', ()=>{ theme = (document.documentElement.getAttribute('data-theme')==='dark') ? 'light' : 'dark'; localStorage.setItem('site-theme', theme); applyTheme(theme); });
 
     // Form submission with progressive enhancement
     const form = document.getElementById('contactForm');
     const status = document.getElementById('status');
 
-    // Notification bar
-    const notif = document.createElement('div');
-    notif.style.position = 'fixed';
-    notif.style.top = '-60px';
-    notif.style.left = '50%';
-    notif.style.transform = 'translateX(-50%)';
-    notif.style.background = 'var(--accent)';
-    notif.style.color = '#fff';
-    notif.style.padding = '14px 24px';
-    notif.style.borderRadius = '12px';
-    notif.style.fontWeight = '600';
-    notif.style.transition = 'top .4s ease';
-    notif.style.zIndex = '9999';
-    document.body.appendChild(notif);
-
-    function showNotification(msg) {
-      notif.textContent = msg;
-      notif.style.top = '20px';
-      setTimeout(()=> notif.style.top = '-60px', 3000);
-    }
-
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       const data = new FormData(form);
       const submitBtn = form.querySelector('button[type="submit"]');
-      submitBtn.disabled = true; 
-      status.style.display='none';
+      submitBtn.disabled = true; status.style.display='none';
       try{
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers:{'Accept':'application/json'}
-        });
+        // If you use Formspree you can POST the form directly. Otherwise replace the URL/action.
+        const res = await fetch(form.action, {method: 'POST', body: data, headers:{'Accept':'application/json'}});
         if(res.ok){
-          status.className='status success'; 
-          status.textContent = 'Message sent — thank you!'; 
-          status.style.display='block'; 
-          form.reset();
-          showNotification('✅ Message sent successfully');
+          status.className='success'; status.textContent = 'Message sent — thank you!'; status.style.display='block'; form.reset();
         } else {
-          const err = await res.json();
-          throw new Error(err.error || 'Something went wrong');
+          const json = await res.json().catch(()=>({ok:false}));
+          status.className='error'; status.textContent = json.error || 'Submission failed — try emailing me instead.'; status.style.display='block';
         }
-      } catch (err){
-        status.className='status error'; 
-        status.textContent = 'Failed to send: ' + err.message;
-        status.style.display='block';
-      } finally {
-        submitBtn.disabled = false;
-      }
+      }catch(err){
+        status.className='error'; status.textContent = 'Network error. Try again or email me.'; status.style.display='block';
+      }finally{ submitBtn.disabled = false; }
     });
   </script>
-
 </body>
 </html>
